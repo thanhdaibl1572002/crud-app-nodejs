@@ -9,6 +9,9 @@ import { config } from 'dotenv'
 import cookieParser from 'cookie-parser'
 
 config()
+
+import ProductRouter from '@/routes/product'
+
 const app = express()
 const PORT = process.env.PORT || 8080
 
@@ -21,7 +24,7 @@ app.use(morgan('dev'))
 app.use(cookieParser())
 
 // Routes
-
+app.use('/products', ProductRouter)
 
 // Database connection
 connect(process.env.MONGO_CONNECTION_STRING as string)
